@@ -1,0 +1,59 @@
+{
+  
+  "name": "ts-crud",
+  
+  "version": "1.0.0",
+  
+  "main": "index.js",
+  
+  "scripts": {
+  
+    
+  "start": "nodemon -e ts,json src/server.ts", 
+  "migration:generate": "typeorm-ts-node-commonjs -d ./src/config/AppDataSource.ts  migration:generate ./src/migrations/default",
+  "migration:run": "typeorm-ts-node-commonjs -d ./src/config/AppDataSource.ts migration:run"
+  },
+  
+  "keywords": [],
+  
+  "author": "",
+  
+  "license": "ISC",
+  
+  "description": "",
+  
+  "dependencies": {
+  
+    
+  "express": "^4.21.2",
+  
+    
+  "pg": "^8.13.3",
+  
+    
+  "reflect-metadata": "^0.2.2",
+  
+    
+  "typeorm": "^0.3.21"
+  
+  },
+  
+  "devDependencies": {
+  
+    
+  "@types/express": "^5.0.0",
+  
+    
+  "@types/node": "^22.13.10",
+  
+    
+  "dotenv": "^16.4.7",
+  
+    
+  "ts-node": "^10.9.2",
+  
+    
+  "typescript": "^5.8.2"
+  
+  }
+}

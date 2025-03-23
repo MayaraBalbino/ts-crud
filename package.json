@@ -9,9 +9,17 @@
   "scripts": {
   
     
-  "start": "nodemon -e ts,json src/server.ts", 
+  "start": "nodemon -e ts,json src/server.ts",
+  
+    
   "migration:generate": "typeorm-ts-node-commonjs -d ./src/config/AppDataSource.ts  migration:generate ./src/migrations/default",
-  "migration:run": "typeorm-ts-node-commonjs -d ./src/config/AppDataSource.ts migration:run"
+  
+    
+  "migration:run": "typeorm-ts-node-commonjs -d ./src/config/AppDataSource.ts migration:run",
+  
+    
+  "docker:up": "docker-compose up -d"
+  
   },
   
   "keywords": [],
@@ -23,6 +31,9 @@
   "description": "",
   
   "dependencies": {
+  
+    
+  "bcrypt": "^5.1.1",
   
     
   "express": "^4.21.2",

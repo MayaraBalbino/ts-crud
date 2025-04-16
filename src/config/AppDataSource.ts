@@ -12,3 +12,11 @@ export const AppDataSource = new DataSource({
     entities: ["src/entities/**/*{.js,.ts}"],
     migrations: ["src/migrations/**/*{.js,.ts}"],
 })
+
+AppDataSource.initialize()
+    .then(() => {
+        console.log('Conexão com o banco de dados estabelecida');
+    })
+    .catch((error) => {
+        console.error('Erro ao conectar ao banco de dados:', error);
+    });

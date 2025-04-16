@@ -1,7 +1,6 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { Task
-    
- } from "./TaskEntity";
+import { Task } from "./TaskEntity";
+
 @Entity("user")
 export class User{
     @PrimaryGeneratedColumn("uuid")
@@ -11,7 +10,7 @@ export class User{
     email: string;
 
     @Column({name: "nome"})
-    name: string;
+    nome: string;
 
     @CreateDateColumn({name: "created_at", type: "timestamp"})
     createdAt: Date;

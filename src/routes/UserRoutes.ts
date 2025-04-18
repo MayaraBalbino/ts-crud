@@ -1,5 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { UserServices } from '../services/UserService';
+import { NetConnectOpts } from 'net';
 
 export class UserRouter {
     constructor(private readonly userService: UserServices) {}
@@ -33,6 +34,29 @@ export class UserRouter {
                     return res.status(200).json(user);
                 } catch (error : any) {
                     next(error);
+                }
+            }
+        );
+
+        router.delete(
+            '/users/:email',
+            async (
+                req: Request,
+                res: Response,
+                next: NextFunction
+            ): Promise<any> => {
+                try {
+                    const { email } = req.params;
+                    const userToDelete = await this.userService.deleteUser(
+                        email
+                    );
+                    return res
+                        .status(200)
+                        .json({
+                            message: `User ${userToDelete} deleted with sucess`,
+                        });
+                } catch (error: any) {
+                    next(error)
                 }
             }
         );

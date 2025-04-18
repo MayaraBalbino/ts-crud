@@ -57,6 +57,8 @@ export class UserServices{
                 throw new Error("User does not exist");
             }
 
+            await this.userRepository.softDelete(userToDelete)
+            
             return userToDelete;
         } catch (error: any) {
             throw new Error(error.message);

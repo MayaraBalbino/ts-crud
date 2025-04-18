@@ -16,6 +16,7 @@ export class BaseRepository<T extends ObjectLiteral> {
     }
 
     public async softDelete(model: T): Promise<UpdateResult> {
-        return await this.repository.softDelete(model);
+        const id = (model as any).id;
+        return await this.repository.softDelete(id);
     }
 }

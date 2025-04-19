@@ -1,8 +1,11 @@
 import { UserRepository } from '../repositories/UserRepository';
 import { User } from '../entities/UserEntity';
 
+
 export class UserServices {
-    public constructor(readonly userRepository: UserRepository) {}
+    public constructor(readonly userRepository: UserRepository) {
+    
+    }
 
     public async createUser(nome: string, email: string): Promise<User> {
         try {
@@ -41,6 +44,23 @@ export class UserServices {
             }
 
             return user;
+        } catch (error: any) {
+            throw new Error(error.message);
+        }
+    }
+
+    public async deleteUser(email: string){
+        try {
+            const userToDelete = await this.userRepository.findByEmail(email);
+
+            if(!userToDelete){
+                throw new Error("User does not exist");
+            }
+
+            await this.userRepository.softDelete(userToDelete)
+            
+            return userToDelete;
+
         } catch (error: any) {
             throw new Error(error.message);
         }
